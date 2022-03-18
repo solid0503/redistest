@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cli-deployment
+  labels:
+    app: redis-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-cli
+  template:
+    metadata:
+      labels:
+        app: redis-cli
+    spec:
+      containers:
+      - name: redis-cli
+        image: redis-cli-app:1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
